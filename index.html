@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="EcoNext — официальный сайт, боты, каналы и приложение" />
   <title>EcoNext — контакты и ссылки</title>
-  <link rel="icon" href="logo.png" type="image/png" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%2334d399'/%3E%3Ctext x='16' y='21' text-anchor='middle' fill='%230f1419' font-size='11' font-family='system-ui,sans-serif' font-weight='700'%3Ee%3C/text%3E%3C/svg%3E" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&display=swap" rel="stylesheet" />
@@ -70,16 +70,34 @@
       background: rgba(255, 255, 255, 0.96);
       padding: 0.35rem;
       box-shadow: var(--shadow);
-      display: block;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       overflow: hidden;
+      position: relative;
     }
 
-    .logo img {
-      width: 100%;
-      height: 100%;
+    .logo img,
+    .logo .logo-fallback-svg {
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
       object-fit: contain;
       display: block;
       border-radius: 0.85rem;
+    }
+
+    .logo img {
+      flex: 0 1 auto;
+    }
+
+    .logo .logo-fallback-svg[hidden] {
+      display: none !important;
+    }
+
+    .logo .logo-fallback-svg:not([hidden]) {
+      flex: 0 1 auto;
     }
 
     h1 {
@@ -207,8 +225,61 @@
   <div class="wrap">
     <header>
       <div class="logo">
-        <img src="logo.png" width="120" height="120" alt="EcoNext — экология будущего с микроволокном" decoding="async" />
+        <img
+          id="logo-img"
+          width="120"
+          height="120"
+          alt="EcoNext — экология будущего с микроволокном"
+          decoding="async"
+          loading="eager"
+          style="display: none"
+        />
+        <svg class="logo-fallback-svg" id="logo-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="EcoNext">
+          <defs>
+            <linearGradient id="lf-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#b8e8ff" />
+              <stop offset="100%" stop-color="#7dd3fc" />
+            </linearGradient>
+          </defs>
+          <circle cx="60" cy="60" r="58" fill="url(#lf-bg)" />
+          <circle cx="60" cy="60" r="52" fill="#ffffff" />
+          <text x="60" y="58" text-anchor="middle" font-family="system-ui,Segoe UI,sans-serif" font-size="15" font-weight="700" fill="#0f172a">
+            <tspan fill="#16a34a">eco</tspan><tspan font-weight="800">NEXT</tspan>
+          </text>
+          <text x="60" y="78" text-anchor="middle" font-family="system-ui,Segoe UI,sans-serif" font-size="8" fill="#64748b">экология будущего</text>
+        </svg>
       </div>
+      <script>
+        (function () {
+          var img = document.getElementById("logo-img");
+          var svg = document.getElementById("logo-svg");
+          if (!img || !svg) return;
+          var names = ["logo.png", "Logo.png", "LOGO.PNG", "logo.PNG", "Logo.PNG", "logo.webp", "Logo.webp"];
+          var base = new URL(".", window.location.href);
+          var i = 0;
+          function showFallback() {
+            img.removeAttribute("src");
+            img.style.display = "none";
+            svg.removeAttribute("hidden");
+          }
+          function tryNext() {
+            if (i >= names.length) {
+              showFallback();
+              return;
+            }
+            var url = new URL(names[i++], base).href;
+            var probe = new Image();
+            probe.onload = function () {
+              img.src = url;
+              img.style.display = "block";
+              svg.setAttribute("hidden", "");
+            };
+            probe.onerror = tryNext;
+            probe.src = url;
+          }
+          tryNext();
+        })();
+      </script>
       <h1>EcoNext</h1>
       <p class="subtitle">Каталог, заказ и акции — выберите удобный способ</p>
     </header>
