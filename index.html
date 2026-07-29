@@ -402,6 +402,34 @@
       object-fit: cover;
     }
 
+    .brand-stack {
+      position: relative;
+      display: block;
+      width: 2.45rem;
+      height: 2.45rem;
+      flex: 0 0 auto;
+      overflow: visible;
+    }
+
+    .brand-stack .brand-icon {
+      width: 100%;
+      height: 100%;
+    }
+
+    .brand-stack .brand-badge {
+      position: absolute;
+      right: -0.3rem;
+      bottom: -0.32rem;
+      z-index: 1;
+      width: 1.08rem;
+      height: 1.08rem;
+      border: 2px solid #fff;
+      border-radius: 0.36rem;
+      background: #fff;
+      box-shadow: 0 3px 9px rgba(20, 35, 27, 0.24);
+      object-fit: cover;
+    }
+
     .link-card .fallback-icon {
       display: grid;
       width: 2.45rem;
@@ -465,6 +493,10 @@
       text-align: center;
     }
 
+    .pair-grid .brand-stack {
+      margin-bottom: 0.18rem;
+    }
+
     .pair-grid .link-text {
       flex: 0 1 auto;
     }
@@ -489,8 +521,16 @@
       text-decoration: none;
     }
 
-    .service-card span:first-child {
+    .service-card > span:first-child {
       font-size: 1.35rem;
+    }
+
+    .service-brand-icon {
+      width: 2.35rem;
+      height: 2.35rem;
+      border-radius: 0.72rem;
+      object-fit: cover;
+      box-shadow: 0 4px 12px rgba(100, 76, 187, 0.18);
     }
 
     .service-card strong {
@@ -708,7 +748,10 @@
           target="_blank"
           rel="noopener noreferrer"
         >
-          <img class="brand-icon" src="icons/max.svg" alt="" width="40" height="40" />
+          <span class="brand-stack" aria-hidden="true">
+            <img class="brand-icon" src="icons/max.svg" alt="" width="40" height="40" />
+            <img class="brand-badge" src="icons/uds.webp" alt="" width="18" height="18" />
+          </span>
           <span class="link-text">
             <strong>Подобрать товар в MAX</strong>
             <small>Работает в России без VPN</small>
@@ -723,7 +766,10 @@
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img class="brand-icon" src="icons/telegram.svg" alt="" width="40" height="40" />
+            <span class="brand-stack" aria-hidden="true">
+              <img class="brand-icon" src="icons/telegram.svg" alt="" width="40" height="40" />
+              <img class="brand-badge" src="icons/uds.webp" alt="" width="18" height="18" />
+            </span>
             <span class="link-text">
               <strong>Telegram-бот</strong>
               <small>Подбор и заказ</small>
@@ -735,7 +781,10 @@
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img class="brand-icon" src="icons/vk.svg" alt="" width="40" height="40" />
+            <span class="brand-stack" aria-hidden="true">
+              <img class="brand-icon" src="icons/vk.svg" alt="" width="40" height="40" />
+              <img class="brand-badge" src="icons/uds.webp" alt="" width="18" height="18" />
+            </span>
             <span class="link-text">
               <strong>VK-бот</strong>
               <small>Подбор и заказ</small>
@@ -751,7 +800,14 @@
           target="_blank"
           rel="noopener noreferrer"
         >
-          <span aria-hidden="true">📱</span>
+          <img
+            class="service-brand-icon"
+            src="icons/uds.webp"
+            alt=""
+            width="38"
+            height="38"
+            aria-hidden="true"
+          />
           <span>
             <strong>Приложение EcoNext</strong>
             <small>Бонусы и заказ</small>
