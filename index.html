@@ -3,934 +3,470 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta
-    name="description"
-    content="Подарки и полезные изделия из микрофибры EcoNext. Подбор товаров и заказ с доставкой по России через MAX, Telegram, VK и UDS."
-  />
-  <meta name="theme-color" content="#f2faf6" />
+  <meta name="description" content="Изделия EcoNext из микрофибры для уборки без бытовой химии, ухода за собой, автомобиля и подарков. Каталог и цены открываются без регистрации." />
+  <meta name="theme-color" content="#f5f8f1" />
   <link rel="canonical" href="https://eco-next-three.vercel.app/" />
   <meta property="og:locale" content="ru_RU" />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="EcoNext — подарки и изделия из микрофибры" />
-  <meta
-    property="og:description"
-    content="Подберём изделия EcoNext для дома, ухода за собой, авто, бани и подарков. Доставка по России."
-  />
+  <meta property="og:title" content="EcoNext — чистота без бытовой химии" />
+  <meta property="og:description" content="Каталог изделий из микрофибры, помощь с выбором и доставка по России." />
   <meta property="og:url" content="https://eco-next-three.vercel.app/" />
   <meta property="og:image" content="https://eco-next-three.vercel.app/logo.png" />
-  <meta name="twitter:card" content="summary" />
-  <title>EcoNext — подарки и изделия из микрофибры</title>
+  <meta name="twitter:card" content="summary_large_image" />
+  <title>EcoNext — изделия из микрофибры для дома и ухода</title>
   <link rel="icon" href="logo.png" type="image/png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet"
-  />
+  <link rel="preconnect" href="https://thumbor.uds.app" />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #f2faf6;
-      --card: rgba(255, 255, 255, 0.94);
-      --text: #14231b;
-      --muted: #627168;
-      --line: rgba(20, 35, 27, 0.1);
-      --green: #177647;
-      --green-dark: #0f5c35;
-      --green-soft: #e5f4eb;
-      --cyan-soft: #e9f8fb;
-      --amber: #f4bf3a;
-      --amber-soft: #fff5d8;
-      --shadow: 0 16px 46px rgba(26, 89, 55, 0.1);
-      --shadow-small: 0 7px 22px rgba(25, 76, 49, 0.08);
+      --ink: #173126;
+      --muted: #617268;
+      --green: #216a4b;
+      --green-dark: #174e38;
+      --green-light: #e9f3ec;
+      --lime: #dcebb7;
+      --cream: #f5f3e9;
+      --paper: #fffefa;
+      --white: #fff;
+      --orange: #e99d48;
+      --line: rgba(23, 49, 38, .12);
+      --shadow: 0 18px 60px rgba(35, 70, 50, .1);
+      --radius: 28px;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body {
-      min-height: 100dvh;
-      background:
-        radial-gradient(circle at 8% 0%, rgba(77, 190, 145, 0.14), transparent 34rem),
-        radial-gradient(circle at 100% 30%, rgba(56, 189, 214, 0.12), transparent 28rem),
-        linear-gradient(180deg, #f7fcf9 0%, var(--bg) 45%, #f7fbf8 100%);
-      color: var(--text);
+      min-width: 320px;
+      color: var(--ink);
+      background: var(--paper);
       font-family: "Manrope", system-ui, sans-serif;
       line-height: 1.5;
       -webkit-font-smoothing: antialiased;
     }
+    img { display: block; max-width: 100%; }
+    a, button { -webkit-tap-highlight-color: transparent; }
+    button { font: inherit; }
+    a { color: inherit; }
+    .container { width: min(1120px, calc(100% - 32px)); margin-inline: auto; }
 
-    button,
-    a {
-      -webkit-tap-highlight-color: transparent;
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid rgba(23, 49, 38, .08);
+      background: rgba(255, 254, 250, .9);
+      backdrop-filter: blur(16px);
     }
-
-    button {
-      font: inherit;
-    }
-
-    .page {
-      width: min(100%, 31rem);
-      margin: 0 auto;
-      padding: 1.35rem 1rem 3rem;
-    }
+    .nav { min-height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 800; }
+    .brand img { width: 43px; height: 43px; border-radius: 50%; object-fit: cover; }
+    .brand small { display: block; color: var(--muted); font-size: 10px; font-weight: 600; letter-spacing: .02em; }
+    .nav-actions { display: flex; align-items: center; gap: 10px; }
+    .nav-phone { color: var(--green-dark); font-size: 14px; font-weight: 700; text-decoration: none; }
+    .mini-button { padding: 10px 16px; border-radius: 999px; background: var(--green); color: white; font-size: 13px; font-weight: 800; text-decoration: none; }
 
     .hero {
       position: relative;
       overflow: hidden;
-      padding: 1.35rem 1.25rem 1.45rem;
-      border: 1px solid rgba(23, 118, 71, 0.12);
-      border-radius: 1.8rem;
+      padding: 58px 0 66px;
       background:
-        linear-gradient(145deg, rgba(232, 248, 239, 0.96), rgba(255, 250, 235, 0.94)),
-        #fff;
-      box-shadow: var(--shadow);
-      text-align: center;
+        radial-gradient(circle at 15% 25%, rgba(220, 235, 183, .8), transparent 28%),
+        linear-gradient(125deg, #f5f8f0 0%, #edf5ed 52%, #f8f3e7 100%);
     }
-
     .hero::after {
       content: "";
       position: absolute;
-      right: -2.5rem;
-      top: -2.5rem;
-      width: 8.5rem;
-      height: 8.5rem;
+      width: 420px;
+      height: 420px;
+      right: -190px;
+      bottom: -250px;
+      border: 70px solid rgba(33, 106, 75, .06);
       border-radius: 50%;
-      background: rgba(244, 191, 58, 0.16);
     }
+    .hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1.06fr .94fr; align-items: center; gap: 64px; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 8px; padding: 7px 11px; border: 1px solid rgba(33, 106, 75, .18); border-radius: 999px; background: rgba(255,255,255,.64); color: var(--green-dark); font-size: 12px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+    .eyebrow::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--orange); }
+    h1 { max-width: 680px; margin-top: 20px; font-size: clamp(38px, 5vw, 64px); font-weight: 800; letter-spacing: -.055em; line-height: 1.02; }
+    .hero-copy { max-width: 610px; margin-top: 20px; color: #53665b; font-size: 18px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    .button { min-height: 54px; display: inline-flex; align-items: center; justify-content: center; gap: 9px; padding: 13px 21px; border: 1px solid transparent; border-radius: 15px; font-size: 15px; font-weight: 800; text-align: center; text-decoration: none; transition: transform .16s ease, box-shadow .16s ease; }
+    .button-primary { background: var(--green); color: white; box-shadow: 0 12px 28px rgba(33, 106, 75, .22); }
+    .button-secondary { border-color: rgba(33, 106, 75, .25); background: rgba(255,255,255,.72); color: var(--green-dark); }
+    .button-light { background: white; color: var(--green-dark); }
+    .button-wide { width: 100%; }
+    .hero-proof { display: flex; flex-wrap: wrap; gap: 10px 18px; margin-top: 22px; color: #52655a; font-size: 13px; font-weight: 700; }
+    .hero-proof span::before { content: "✓"; margin-right: 6px; color: var(--green); font-weight: 900; }
 
-    .logo {
-      position: relative;
-      z-index: 1;
-      display: grid;
-      place-items: center;
-      width: 5.5rem;
-      height: 5.5rem;
-      margin: 0 auto 0.8rem;
-      overflow: hidden;
-      border: 4px solid rgba(255, 255, 255, 0.9);
-      border-radius: 50%;
-      background: #fff;
-      box-shadow: 0 9px 25px rgba(23, 118, 71, 0.14);
-    }
+    .hero-visual { position: relative; min-height: 480px; }
+    .hero-photo { position: absolute; inset: 20px 20px 24px 54px; overflow: hidden; border: 10px solid rgba(255,255,255,.92); border-radius: 42px 42px 120px 42px; background: #e4eee4; box-shadow: var(--shadow); }
+    .hero-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .visual-logo { position: absolute; left: 0; top: 0; width: 110px; height: 110px; display: grid; place-items: center; padding: 8px; border-radius: 50%; background: white; box-shadow: 0 14px 35px rgba(34, 75, 52, .17); }
+    .visual-logo img { width: 100%; height: 100%; object-fit: contain; border-radius: 50%; }
+    .bonus-card { position: absolute; right: 0; bottom: 0; width: 205px; padding: 18px; border-radius: 22px; background: var(--green-dark); color: white; box-shadow: 0 15px 36px rgba(23, 78, 56, .25); }
+    .bonus-card strong { display: block; font-size: 25px; line-height: 1.1; }
+    .bonus-card span { display: block; margin-top: 6px; color: rgba(255,255,255,.74); font-size: 12px; }
 
-    .logo img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
+    .section { padding: 80px 0; }
+    .section-soft { background: #f3f7f1; }
+    .section-cream { background: var(--cream); }
+    .section-head { max-width: 690px; margin-bottom: 30px; }
+    .section-kicker { color: var(--green); font-size: 12px; font-weight: 800; letter-spacing: .09em; text-transform: uppercase; }
+    h2 { margin-top: 8px; font-size: clamp(29px, 4vw, 45px); letter-spacing: -.045em; line-height: 1.1; }
+    .section-copy { margin-top: 12px; color: var(--muted); font-size: 16px; }
 
-    .eyebrow {
-      position: relative;
-      z-index: 1;
-      display: inline-flex;
-      align-items: center;
-      min-height: 1.75rem;
-      padding: 0.3rem 0.7rem;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.78);
-      color: var(--green-dark);
-      font-size: 0.78rem;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
+    .product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .product-card { overflow: hidden; border: 1px solid var(--line); border-radius: 24px; background: white; box-shadow: 0 8px 30px rgba(38, 72, 51, .06); }
+    .product-photo { aspect-ratio: 4 / 3; overflow: hidden; background: #edf2ea; }
+    .product-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform .3s ease; }
+    .product-card:nth-child(1) .product-photo img { object-position: 18% center; }
+    .product-card:nth-child(2) .product-photo img { object-position: center; }
+    .product-card:nth-child(3) .product-photo img { object-position: 82% center; }
+    .product-card:hover .product-photo img { transform: scale(1.035); }
+    .product-body { padding: 20px; }
+    .product-body h3 { font-size: 18px; line-height: 1.25; }
+    .product-body p { margin-top: 8px; color: var(--muted); font-size: 14px; }
+    .product-link { display: inline-flex; margin-top: 15px; color: var(--green); font-size: 14px; font-weight: 800; text-decoration: none; }
 
-    h1 {
-      position: relative;
-      z-index: 1;
-      margin-top: 0.75rem;
-      font-size: clamp(1.55rem, 6vw, 2rem);
-      font-weight: 800;
-      letter-spacing: -0.04em;
-      line-height: 1.14;
-    }
+    .category-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; }
+    .category-button { min-height: 126px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; padding: 14px 9px; border: 1px solid var(--line); border-radius: 20px; background: white; color: var(--ink); cursor: pointer; font-size: 13px; font-weight: 800; line-height: 1.25; text-align: center; transition: .16s ease; }
+    .category-button span { font-size: 29px; }
+    .category-button[aria-pressed="true"] { border-color: var(--green); background: var(--green); color: white; transform: translateY(-3px); box-shadow: 0 12px 25px rgba(33, 106, 75, .18); }
+    .category-result { display: none; grid-template-columns: 1fr auto; align-items: center; gap: 24px; margin-top: 18px; padding: 22px; border-radius: 22px; background: var(--green-light); }
+    .category-result.is-open { display: grid; animation: reveal .2s ease-out; }
+    .category-result h3 { font-size: 19px; }
+    .category-result p { margin-top: 4px; color: var(--muted); font-size: 14px; }
+    @keyframes reveal { from { opacity: 0; transform: translateY(-7px); } }
 
-    .hero-copy {
-      position: relative;
-      z-index: 1;
-      max-width: 23rem;
-      margin: 0.7rem auto 0;
-      color: #516158;
-      font-size: 0.94rem;
-    }
+    .order-layout { display: grid; grid-template-columns: .9fr 1.1fr; gap: 50px; align-items: start; }
+    .order-intro { position: sticky; top: 96px; }
+    .order-intro .section-head { margin-bottom: 22px; }
+    .simple-steps { display: grid; gap: 13px; list-style: none; counter-reset: step; }
+    .simple-steps li { display: grid; grid-template-columns: 38px 1fr; gap: 11px; align-items: center; color: #53665b; font-size: 14px; }
+    .simple-steps li::before { counter-increment: step; content: counter(step); width: 38px; height: 38px; display: grid; place-items: center; border-radius: 50%; background: var(--lime); color: var(--green-dark); font-weight: 800; }
 
-    .hero-note {
-      position: relative;
-      z-index: 1;
-      display: flex;
-      justify-content: center;
-      gap: 0.45rem;
-      margin-top: 0.95rem;
-      color: var(--green-dark);
-      font-size: 0.84rem;
-      font-weight: 700;
-    }
+    .choice-stack { display: grid; gap: 14px; }
+    .choice-card { display: grid; grid-template-columns: 52px 1fr auto; align-items: center; gap: 15px; padding: 18px; border: 1px solid var(--line); border-radius: 22px; background: white; color: var(--ink); text-decoration: none; box-shadow: 0 8px 25px rgba(30, 65, 44, .06); transition: .16s ease; }
+    .choice-card.recommended { border-color: transparent; background: var(--green); color: white; box-shadow: 0 14px 34px rgba(33, 106, 75, .2); }
+    .choice-icon { width: 52px; height: 52px; display: grid; place-items: center; border-radius: 15px; background: #f3f6f2; font-size: 25px; }
+    .choice-icon img { width: 100%; height: 100%; border-radius: 15px; object-fit: cover; }
+    .choice-card strong { display: block; font-size: 16px; }
+    .choice-card small { display: block; margin-top: 3px; color: var(--muted); font-size: 12px; }
+    .choice-card.recommended small { color: rgba(255,255,255,.72); }
+    .choice-arrow { color: var(--green); font-size: 22px; font-weight: 800; }
+    .choice-card.recommended .choice-arrow { color: white; }
+    .channel-label { grid-column: 1 / -1; margin: 10px 0 -3px; color: var(--muted); font-size: 13px; font-weight: 700; }
+    .channel-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .channel-card { min-height: 136px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 9px; padding: 14px 9px; border: 1px solid var(--line); border-radius: 20px; background: white; font-size: 13px; font-weight: 800; text-align: center; text-decoration: none; }
+    .channel-card img { width: 45px; height: 45px; border-radius: 13px; }
+    .channel-card small { color: var(--muted); font-size: 10px; font-weight: 600; }
+    .phone-card { margin-top: 4px; text-align: center; }
+    .phone-card p { color: var(--muted); font-size: 13px; }
+    .phone-card a { display: inline-flex; margin-top: 5px; color: var(--green-dark); font-size: 19px; font-weight: 800; text-decoration: none; }
 
-    .hero-cta {
-      position: relative;
-      z-index: 1;
-      display: flex;
-      min-height: 3.2rem;
-      align-items: center;
-      justify-content: center;
-      margin-top: 1rem;
-      padding: 0.75rem 1rem;
-      border-radius: 1rem;
-      background: var(--green);
-      color: #fff;
-      font-size: 0.95rem;
-      font-weight: 800;
-      text-decoration: none;
-      box-shadow: 0 8px 20px rgba(23, 118, 71, 0.22);
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
-    }
+    .loyalty { padding: 68px 0; background: var(--green-dark); color: white; }
+    .loyalty-grid { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 35px; }
+    .loyalty h2 { max-width: 720px; margin-top: 0; }
+    .loyalty p { max-width: 690px; margin-top: 13px; color: rgba(255,255,255,.72); }
+    .loyalty-note { margin-top: 12px; color: #e1edc4; font-size: 13px; font-weight: 700; }
 
-    .hero-cta:active {
-      transform: scale(0.985);
-    }
+    .trust-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .trust-card { padding: 24px; border: 1px solid var(--line); border-radius: 24px; background: white; }
+    .trust-icon { width: 46px; height: 46px; display: grid; place-items: center; border-radius: 14px; background: var(--green-light); font-size: 23px; }
+    .trust-card h3 { margin-top: 16px; font-size: 17px; }
+    .trust-card p { margin-top: 7px; color: var(--muted); font-size: 14px; }
 
-    .section {
-      margin-top: 1rem;
-      padding: 1.1rem;
-      border: 1px solid var(--line);
-      border-radius: 1.55rem;
-      background: var(--card);
-      box-shadow: var(--shadow-small);
-      backdrop-filter: blur(12px);
-    }
+    .social-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .social-card { min-height: 115px; display: flex; flex-direction: column; justify-content: space-between; padding: 17px; border: 1px solid var(--line); border-radius: 20px; background: white; text-decoration: none; }
+    .social-card img { width: 35px; height: 35px; border-radius: 10px; }
+    .social-card > span:first-child:not(:last-child) { font-size: 28px; }
+    .social-card strong { display: block; margin-top: 12px; font-size: 13px; }
+    .social-card small { display: block; margin-top: 3px; color: var(--muted); font-size: 10px; }
 
-    .section-title {
-      font-size: 1.1rem;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      line-height: 1.25;
-    }
+    footer { padding: 32px 0 44px; border-top: 1px solid var(--line); color: var(--muted); font-size: 12px; }
+    .footer-row { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 15px; }
+    .footer-links a { color: var(--green-dark); text-decoration: none; font-weight: 700; }
 
-    .section-copy {
-      margin-top: 0.35rem;
-      color: var(--muted);
-      font-size: 0.9rem;
-    }
-
-    .category-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0.55rem;
-      margin-top: 0.9rem;
-    }
-
-    .category-button {
-      min-height: 5.2rem;
-      padding: 0.65rem 0.35rem;
-      border: 1px solid var(--line);
-      border-radius: 1.15rem;
-      background: #fff;
-      color: var(--text);
-      cursor: pointer;
-      font-size: 0.82rem;
-      font-weight: 700;
-      line-height: 1.25;
-      box-shadow: 0 4px 14px rgba(20, 35, 27, 0.05);
-      transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease, transform 0.15s ease;
-    }
-
-    .category-button span {
-      display: block;
-      margin-bottom: 0.35rem;
-      font-size: 1.55rem;
-    }
-
-    .category-button[aria-pressed="true"] {
-      border-color: var(--green);
-      background: var(--green);
-      color: #fff;
-      box-shadow: 0 8px 19px rgba(23, 118, 71, 0.22);
-    }
-
-    .category-button:active {
-      transform: scale(0.97);
-    }
-
-    .category-result {
-      display: none;
-      margin-top: 0.75rem;
-      padding: 0.95rem;
-      border: 1px solid rgba(23, 118, 71, 0.12);
-      border-radius: 1.15rem;
-      background: linear-gradient(145deg, #fff, #f8fcf9);
-    }
-
-    .category-result.is-open {
-      display: block;
-      animation: reveal 0.2s ease-out;
-    }
-
-    @keyframes reveal {
-      from {
-        opacity: 0;
-        transform: translateY(-0.35rem);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .category-result h3 {
-      font-size: 0.94rem;
-      font-weight: 800;
-    }
-
-    .category-items {
-      display: grid;
-      gap: 0.45rem;
-      margin-top: 0.65rem;
-      list-style: none;
-    }
-
-    .category-items li {
-      position: relative;
-      padding-left: 1rem;
-      color: #45554c;
-      font-size: 0.88rem;
-    }
-
-    .category-items li::before {
-      content: "";
-      position: absolute;
-      left: 0.1rem;
-      top: 0.52rem;
-      width: 0.32rem;
-      height: 0.32rem;
-      border-radius: 50%;
-      background: var(--green);
-    }
-
-    .category-cta,
-    .link-card {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      min-height: 3.2rem;
-      border: 0;
-      border-radius: 1rem;
-      cursor: pointer;
-      text-decoration: none;
-      font-weight: 700;
-    }
-
-    .category-cta {
-      margin-top: 0.85rem;
-      padding: 0.7rem 0.8rem;
-      background: var(--amber);
-      color: #3c300e;
-      font-size: 0.92rem;
-      box-shadow: 0 7px 17px rgba(194, 142, 20, 0.2);
-    }
-
-    .selected-note {
-      display: none;
-      margin-top: 0.75rem;
-      padding: 0.65rem 0.75rem;
-      border-radius: 0.9rem;
-      background: var(--amber-soft);
-      color: #655018;
-      font-size: 0.84rem;
-      font-weight: 700;
-    }
-
-    .selected-note.is-visible {
-      display: block;
-    }
-
-    .link-stack {
-      display: grid;
-      gap: 0.6rem;
-      margin-top: 0.8rem;
-    }
-
-    .link-card {
-      justify-content: flex-start;
-      gap: 0.75rem;
-      padding: 0.78rem 0.85rem;
-      border: 1px solid var(--line);
-      background: #fff;
-      color: var(--text);
-      box-shadow: 0 3px 13px rgba(20, 35, 27, 0.05);
-    }
-
-    .link-card.recommended {
-      border-color: var(--green);
-      background: var(--green);
-      color: #fff;
-    }
-
-    .link-card .brand-icon,
-    .compact-link .brand-icon {
-      width: 2.45rem;
-      height: 2.45rem;
-      flex: 0 0 auto;
-      border-radius: 0.72rem;
-      object-fit: cover;
-    }
-
-    .brand-stack {
-      position: relative;
-      display: block;
-      width: 2.45rem;
-      height: 2.45rem;
-      flex: 0 0 auto;
-      overflow: visible;
-    }
-
-    .brand-stack .brand-icon {
-      width: 100%;
-      height: 100%;
-    }
-
-    .brand-stack .brand-badge {
-      position: absolute;
-      right: -0.3rem;
-      bottom: -0.32rem;
-      z-index: 1;
-      width: 1.08rem;
-      height: 1.08rem;
-      border: 2px solid #fff;
-      border-radius: 0.36rem;
-      background: #fff;
-      box-shadow: 0 3px 9px rgba(20, 35, 27, 0.24);
-      object-fit: cover;
-    }
-
-    .link-card .fallback-icon {
-      display: grid;
-      width: 2.45rem;
-      height: 2.45rem;
-      flex: 0 0 auto;
-      place-items: center;
-      border-radius: 0.72rem;
-      background: rgba(23, 118, 71, 0.1);
-      font-size: 1.25rem;
-    }
-
-    .link-card.recommended .fallback-icon {
-      background: rgba(255, 255, 255, 0.14);
-    }
-
-    .link-text {
-      min-width: 0;
-      flex: 1;
-    }
-
-    .link-text strong {
-      display: block;
-      font-size: 0.92rem;
-      line-height: 1.3;
-    }
-
-    .link-text small {
-      display: block;
-      margin-top: 0.15rem;
-      color: var(--muted);
-      font-size: 0.78rem;
-      font-weight: 500;
-    }
-
-    .link-card.recommended .link-text small {
-      color: rgba(255, 255, 255, 0.76);
-    }
-
-    .badge {
-      padding: 0.2rem 0.4rem;
-      border-radius: 999px;
-      background: var(--amber);
-      color: #45370e;
-      font-size: 0.74rem;
-      font-weight: 800;
-      text-transform: uppercase;
-    }
-
-    .pair-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.6rem;
-    }
-
-    .pair-grid .link-card {
-      min-height: 6.6rem;
-      flex-direction: column;
-      justify-content: center;
-      gap: 0.45rem;
-      padding: 0.7rem 0.45rem;
-      text-align: center;
-    }
-
-    .pair-grid .brand-stack {
-      margin-bottom: 0.18rem;
-    }
-
-    .pair-grid .link-text {
-      flex: 0 1 auto;
-    }
-
-    .service-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.6rem;
-      margin-top: 0.6rem;
-    }
-
-    .service-card {
-      display: flex;
-      min-height: 6.3rem;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: 0.8rem;
-      border: 1px solid var(--line);
-      border-radius: 1.1rem;
-      background: #fafcfb;
-      color: var(--text);
-      text-decoration: none;
-    }
-
-    .service-card > span:first-child {
-      font-size: 1.35rem;
-    }
-
-    .service-brand-icon {
-      width: 2.35rem;
-      height: 2.35rem;
-      border-radius: 0.72rem;
-      object-fit: cover;
-      box-shadow: 0 4px 12px rgba(100, 76, 187, 0.18);
-    }
-
-    .service-card strong {
-      display: block;
-      margin-top: 0.55rem;
-      font-size: 0.84rem;
-      line-height: 1.3;
-    }
-
-    .service-card small {
-      display: block;
-      margin-top: 0.2rem;
-      color: var(--muted);
-      font-size: 0.74rem;
-    }
-
-    .compact-links {
-      display: grid;
-      gap: 0.5rem;
-      margin-top: 0.8rem;
-    }
-
-    .compact-link {
-      display: flex;
-      align-items: center;
-      gap: 0.7rem;
-      padding: 0.7rem;
-      border-radius: 1rem;
-      background: rgba(255, 255, 255, 0.72);
-      color: var(--text);
-      text-decoration: none;
-    }
-
-    .compact-link .brand-icon {
-      width: 2.15rem;
-      height: 2.15rem;
-    }
-
-    .compact-link strong {
-      display: block;
-      font-size: 0.84rem;
-    }
-
-    .compact-link small {
-      display: block;
-      color: var(--muted);
-      font-size: 0.74rem;
-    }
-
-    .phone-link {
-      display: flex;
-      min-height: 3.4rem;
-      align-items: center;
-      justify-content: center;
-      margin-top: 1rem;
-      border: 1px solid rgba(23, 118, 71, 0.3);
-      border-radius: 1.1rem;
-      background: rgba(255, 255, 255, 0.8);
-      color: var(--green-dark);
-      font-size: 0.92rem;
-      font-weight: 800;
-      text-decoration: none;
-    }
-
-    footer {
-      padding: 1.4rem 0 0;
-      color: var(--muted);
-      text-align: center;
-      font-size: 0.78rem;
-    }
-
-    :focus-visible {
-      outline: 3px solid rgba(244, 191, 58, 0.9);
-      outline-offset: 3px;
-    }
-
+    :focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; }
     @media (hover: hover) {
-      .hero-cta:hover,
-      .link-card:hover,
-      .service-card:hover,
-      .compact-link:hover,
-      .phone-link:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 9px 22px rgba(20, 35, 27, 0.09);
-      }
-
-      .category-button:hover {
-        border-color: rgba(23, 118, 71, 0.45);
-      }
+      .button:hover, .choice-card:hover, .channel-card:hover, .social-card:hover { transform: translateY(-3px); }
     }
-
-    @media (max-width: 350px) {
-      .page {
-        padding-inline: 0.7rem;
-      }
-
-      .section,
-      .hero {
-        padding-inline: 0.9rem;
-      }
-
-      .category-button {
-        font-size: 0.76rem;
-      }
+    @media (max-width: 900px) {
+      .hero { padding-top: 42px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 34px; }
+      .hero-visual { min-height: 410px; max-width: 600px; width: 100%; margin-inline: auto; }
+      .category-grid { grid-template-columns: repeat(3, 1fr); }
+      .order-layout { grid-template-columns: 1fr; }
+      .order-intro { position: static; }
+      .social-grid { grid-template-columns: repeat(2, 1fr); }
     }
-
+    @media (max-width: 680px) {
+      .container { width: min(100% - 24px, 1120px); }
+      .nav { min-height: 61px; }
+      .brand img { width: 38px; height: 38px; }
+      .brand small, .nav-phone { display: none; }
+      .mini-button { padding: 9px 13px; font-size: 12px; }
+      .hero { padding: 34px 0 42px; }
+      h1 { font-size: clamp(35px, 11vw, 49px); }
+      .hero-copy { font-size: 16px; }
+      .hero-actions { display: grid; }
+      .button { width: 100%; }
+      .hero-proof { display: grid; gap: 7px; }
+      .hero-visual { min-height: 340px; }
+      .hero-photo { inset: 15px 4px 20px 35px; border-width: 7px; border-radius: 29px 29px 80px 29px; }
+      .visual-logo { width: 78px; height: 78px; }
+      .bonus-card { width: 171px; padding: 14px; border-radius: 17px; }
+      .bonus-card strong { font-size: 21px; }
+      .section { padding: 58px 0; }
+      .section-head { margin-bottom: 22px; }
+      .product-grid, .trust-grid { grid-template-columns: 1fr; }
+      .product-grid { grid-auto-flow: column; grid-auto-columns: 84%; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 8px; }
+      .product-card { scroll-snap-align: start; }
+      .category-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+      .category-button { min-height: 104px; padding-inline: 5px; font-size: 11px; }
+      .category-result { grid-template-columns: 1fr; gap: 14px; }
+      .choice-card { grid-template-columns: 48px 1fr auto; padding: 15px; }
+      .choice-icon { width: 48px; height: 48px; }
+      .channel-grid { gap: 8px; }
+      .channel-card { min-height: 124px; font-size: 12px; }
+      .loyalty-grid { grid-template-columns: 1fr; }
+      .social-grid { grid-template-columns: 1fr 1fr; gap: 9px; }
+      .footer-row { align-items: flex-start; flex-direction: column; }
+    }
+    @media (max-width: 370px) {
+      .category-grid { grid-template-columns: repeat(2, 1fr); }
+      .channel-card small { display: none; }
+    }
     @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
-
-      *,
-      *::before,
-      *::after {
-        animation-duration: 0.01ms !important;
-        transition-duration: 0.01ms !important;
-      }
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
     }
   </style>
 </head>
 <body>
-  <main class="page">
-    <header class="hero">
-      <div class="logo">
-        <img src="logo.png" width="88" height="88" alt="EcoNext" />
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="#top" aria-label="EcoNext — в начало страницы">
+        <img src="logo.png" width="43" height="43" alt="" />
+        <span>EcoNext<small>изделия из микрофибры</small></span>
+      </a>
+      <div class="nav-actions">
+        <a class="nav-phone" href="tel:+79212523295" data-track="click_call">+7 (921) 252-32-95</a>
+        <a class="mini-button" href="https://econext.uds.app/c" target="_blank" rel="noopener noreferrer" data-track="click_catalog_uds">Каталог и цены</a>
       </div>
-      <p class="eyebrow">Подарки и полезные вещи</p>
-      <h1>Изделия из микрофибры EcoNext</h1>
-      <p class="hero-copy">
-        Для близких, дома, авто, бани и отдыха. Подберём подходящий вариант и поможем заказать с доставкой по России.
-      </p>
-      <p class="hero-note"><span>✓</span> Подскажем и поможем выбрать</p>
-      <a class="hero-cta" href="#order">Посмотреть ассортимент и заказать</a>
-    </header>
+    </div>
+  </header>
 
-    <section class="section" aria-labelledby="gift-title">
-      <h2 class="section-title" id="gift-title">Выберите, для кого или для чего подарок</h2>
-      <p class="section-copy">Нажмите на категорию — покажем, что можно посмотреть в общем каталоге.</p>
-
-      <div class="category-grid" role="group" aria-label="Категории подарков">
-        <button
-          class="category-button"
-          type="button"
-          data-category="her"
-          aria-pressed="false"
-          aria-controls="category-result"
-        >
-          <span aria-hidden="true">🎁</span>
-          Для неё
-        </button>
-        <button
-          class="category-button"
-          type="button"
-          data-category="home"
-          aria-pressed="false"
-          aria-controls="category-result"
-        >
-          <span aria-hidden="true">🏠</span>
-          Для дома
-        </button>
-        <button
-          class="category-button"
-          type="button"
-          data-category="auto"
-          aria-pressed="false"
-          aria-controls="category-result"
-        >
-          <span aria-hidden="true">🚗</span>
-          Для авто
-        </button>
-      </div>
-
-      <div class="category-result" id="category-result" aria-live="polite">
-        <h3 id="category-heading">Выбранная категория</h3>
-        <ul class="category-items" id="category-items"></ul>
-        <button class="category-cta" id="category-cta" type="button"></button>
-      </div>
-    </section>
-
-    <section class="section" id="order" aria-labelledby="order-title">
-      <h2 class="section-title" id="order-title">Посмотреть ассортимент и заказать</h2>
-      <p class="section-copy">
-        Каталог общий. Выберите товары из подсказки выше или напишите боту, для кого нужен подарок.
-      </p>
-      <p class="selected-note" id="selected-note"></p>
-
-      <div class="link-stack">
-        <a
-          class="link-card recommended"
-          href="https://max.ru/id352809658189_bot"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <span class="brand-stack" aria-hidden="true">
-            <img class="brand-icon" src="icons/max.svg" alt="" width="40" height="40" />
-            <img class="brand-badge" src="icons/uds.webp" alt="" width="18" height="18" />
-          </span>
-          <span class="link-text">
-            <strong>Подобрать товар в MAX</strong>
-            <small>Работает в России без VPN</small>
-          </span>
-          <span class="badge">Советуем</span>
-        </a>
-
-        <div class="pair-grid">
-          <a
-            class="link-card"
-            href="https://t.me/AssistentEconext_Bot"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <span class="brand-stack" aria-hidden="true">
-              <img class="brand-icon" src="icons/telegram.svg" alt="" width="40" height="40" />
-              <img class="brand-badge" src="icons/uds.webp" alt="" width="18" height="18" />
-            </span>
-            <span class="link-text">
-              <strong>Telegram-бот</strong>
-              <small>Подбор и заказ</small>
-            </span>
-          </a>
-          <a
-            class="link-card"
-            href="https://vk.me/club57407045"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <span class="brand-stack" aria-hidden="true">
-              <img class="brand-icon" src="icons/vk.svg" alt="" width="40" height="40" />
-              <img class="brand-badge" src="icons/uds.webp" alt="" width="18" height="18" />
-            </span>
-            <span class="link-text">
-              <strong>VK-бот</strong>
-              <small>Подбор и заказ</small>
-            </span>
-          </a>
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow">Доставка по России</p>
+          <h1>Чистота без лишней бытовой химии</h1>
+          <p class="hero-copy">Изделия EcoNext из микрофибры для дома, ухода за собой, автомобиля и подарков. Откройте каталог сразу или напишите нам — поможем выбрать.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="https://econext.uds.app/c" target="_blank" rel="noopener noreferrer" data-track="click_catalog_uds">Открыть каталог и цены <span aria-hidden="true">→</span></a>
+            <a class="button button-secondary" href="#order" data-track="click_gift_cta">Помочь мне выбрать</a>
+          </div>
+          <div class="hero-proof" aria-label="Преимущества">
+            <span>Каталог без регистрации</span>
+            <span>Помощь с выбором</span>
+            <span>500 приветственных баллов</span>
+          </div>
+        </div>
+        <div class="hero-visual" aria-label="Изделия EcoNext">
+          <div class="hero-photo">
+            <img src="hero-products.webp" width="1536" height="1024" alt="Ассортимент изделий из микрофибры" fetchpriority="high" />
+          </div>
+          <div class="visual-logo"><img src="logo.png" width="94" height="94" alt="EcoNext" /></div>
+          <div class="bonus-card"><strong>500 баллов</strong><span>новым участникам программы лояльности UDS</span></div>
         </div>
       </div>
+    </section>
 
-      <div class="service-grid">
-        <a
-          class="service-card"
-          href="https://econext.uds.app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img
-            class="service-brand-icon"
-            src="icons/uds.webp"
-            alt=""
-            width="38"
-            height="38"
-            aria-hidden="true"
-          />
-          <span>
-            <strong>Приложение EcoNext</strong>
-            <small>Бонусы и заказ</small>
-          </span>
-        </a>
-        <a
-          class="service-card"
-          href="https://www.эколайф.рус"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <span aria-hidden="true">🌐</span>
-          <span>
-            <strong>Каталог на сайте</strong>
-            <small>Товары и описания</small>
-          </span>
-        </a>
+    <section class="section" aria-labelledby="popular-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-kicker">С чего начать</p>
+          <h2 id="popular-title">Популярные решения EcoNext</h2>
+          <p class="section-copy">Для ежедневной уборки, бережного ухода и полезных подарков.</p>
+        </div>
+        <div class="product-grid">
+          <article class="product-card">
+            <div class="product-photo"><img src="hero-products.webp" width="1536" height="1024" alt="Изделия из микрофибры для дома" loading="lazy" /></div>
+            <div class="product-body"><h3>Для уборки дома</h3><p>Салфетки для кухни, ванной, стекла, зеркал и разных поверхностей.</p><a class="product-link" href="https://econext.uds.app/c/goods?categoryId=3333113" target="_blank" rel="noopener noreferrer" data-track="click_catalog_uds">Смотреть в каталоге →</a></div>
+          </article>
+          <article class="product-card">
+            <div class="product-photo"><img src="hero-products.webp" width="1536" height="1024" alt="Полотенца и изделия для ухода за собой" loading="lazy" /></div>
+            <div class="product-body"><h3>Для ухода за собой</h3><p>Полотенца, тюрбаны, мочалки и мягкие изделия для лица и тела.</p><a class="product-link" href="https://econext.uds.app/c/goods?categoryId=3333115" target="_blank" rel="noopener noreferrer" data-track="click_catalog_uds">Смотреть в каталоге →</a></div>
+          </article>
+          <article class="product-card">
+            <div class="product-photo"><img src="hero-products.webp" width="1536" height="1024" alt="Подарочный набор изделий из микрофибры" loading="lazy" /></div>
+            <div class="product-body"><h3>Для подарка</h3><p>Практичные наборы для близких, коллег, дома, бани и автомобиля.</p><a class="product-link" href="#order" data-track="click_gift_category_cta">Подобрать подарок →</a></div>
+          </article>
+        </div>
       </div>
     </section>
 
-    <section class="section" aria-labelledby="news-title">
-      <h2 class="section-title" id="news-title">Новости, акции и ярмарки</h2>
-      <p class="section-copy">Подпишитесь, чтобы знать о новинках и ближайших выездах.</p>
-
-      <div class="compact-links">
-        <a
-          class="compact-link"
-          href="https://t.me/ecoNEXT_microfiber"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img class="brand-icon" src="icons/telegram.svg" alt="" width="36" height="36" />
-          <span>
-            <strong>Telegram-канал EcoNext</strong>
-            <small>Новинки, акции и полезные советы</small>
-          </span>
-        </a>
-        <a
-          class="compact-link"
-          href="https://max.ru/join/j6qWUNJz2EqAmaiTeXHbCrAWpvtud3l95zxdzkO_eMA"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img class="brand-icon" src="icons/max.svg" alt="" width="36" height="36" />
-          <span>
-            <strong>MAX-канал EcoNext</strong>
-            <small>Новости и предложения</small>
-          </span>
-        </a>
-        <a
-          class="compact-link"
-          href="https://t.me/+PTibcvzZLzczNmQy"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <span class="fallback-icon" aria-hidden="true">🗓</span>
-          <span>
-            <strong>Где нас встретить</strong>
-            <small>Города, даты и адреса ярмарок</small>
-          </span>
-        </a>
-        <a
-          class="compact-link"
-          href="https://vk.com/ecolifemicrofiber"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img class="brand-icon" src="icons/vk.svg" alt="" width="36" height="36" />
-          <span>
-            <strong>Сообщество ВКонтакте</strong>
-            <small>Отзывы, фотографии и новости</small>
-          </span>
-        </a>
+    <section class="section section-soft" aria-labelledby="category-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-kicker">Быстрый подбор</p>
+          <h2 id="category-title">Что вам нужно?</h2>
+          <p class="section-copy">Выберите категорию — подскажем, где удобнее посмотреть товары.</p>
+        </div>
+        <div class="category-grid" role="group" aria-label="Категории товаров">
+          <button class="category-button" type="button" data-category="home" data-track="select_gift_category_home" aria-pressed="false"><span aria-hidden="true">🏠</span>Для дома</button>
+          <button class="category-button" type="button" data-category="kitchen" data-track="select_gift_category_home" aria-pressed="false"><span aria-hidden="true">✨</span>Кухня и ванная</button>
+          <button class="category-button" type="button" data-category="care" data-track="select_gift_category_her" aria-pressed="false"><span aria-hidden="true">🌿</span>Лицо и тело</button>
+          <button class="category-button" type="button" data-category="bath" data-track="select_gift_category_her" aria-pressed="false"><span aria-hidden="true">🧖‍♀️</span>Баня и полотенца</button>
+          <button class="category-button" type="button" data-category="auto" data-track="select_gift_category_auto" aria-pressed="false"><span aria-hidden="true">🚗</span>Для авто</button>
+          <button class="category-button" type="button" data-category="gift" data-track="select_gift_category_her" aria-pressed="false"><span aria-hidden="true">🎁</span>Подарки</button>
+        </div>
+        <div class="category-result" id="category-result" aria-live="polite">
+          <div><h3 id="category-result-title"></h3><p id="category-result-copy"></p></div>
+          <a class="button button-primary" id="category-result-link" href="https://econext.uds.app/c" target="_blank" rel="noopener noreferrer" data-track="click_catalog_uds">Открыть товары</a>
+        </div>
       </div>
     </section>
 
-    <a class="phone-link" href="tel:+79212523295">📞 Позвонить: +7 (921) 252-32-95</a>
+    <section class="section section-cream" id="order" aria-labelledby="order-title">
+      <div class="container order-layout">
+        <div class="order-intro">
+          <div class="section-head">
+            <p class="section-kicker">Покупка без путаницы</p>
+            <h2 id="order-title">Выберите удобный способ</h2>
+            <p class="section-copy">Для просмотра товаров ничего устанавливать не нужно. Приложение UDS пригодится позже — для баллов, персональных предложений и повторных покупок.</p>
+          </div>
+          <ol class="simple-steps">
+            <li>Откройте каталог и посмотрите цены</li>
+            <li>Если нужно — задайте вопрос в удобном мессенджере</li>
+            <li>Подключите UDS, чтобы получать баллы и предложения</li>
+          </ol>
+        </div>
 
-    <footer>EcoNext · подарки и полезные изделия из микрофибры</footer>
+        <div class="choice-stack">
+          <a class="choice-card recommended" href="https://econext.uds.app/c" target="_blank" rel="noopener noreferrer" data-track="click_catalog_uds">
+            <span class="choice-icon"><img src="icons/uds.webp" width="52" height="52" alt="" /></span>
+            <span><strong>Каталог и цены UDS</strong><small>Откроется в браузере — без скачивания и регистрации</small></span>
+            <span class="choice-arrow" aria-hidden="true">→</span>
+          </a>
+
+          <p class="channel-label">Нужна помощь с выбором? Напишите там, где уже общаетесь:</p>
+          <div class="channel-grid">
+            <a class="channel-card" href="https://max.ru/id352809658189_bot" target="_blank" rel="noopener noreferrer" data-track="click_max"><img src="icons/max.svg" width="45" height="45" alt="" /><span>MAX</span><small>Подбор и заказ</small></a>
+            <a class="channel-card" href="https://t.me/AssistentEconext_Bot" target="_blank" rel="noopener noreferrer" data-track="click_telegram"><img src="icons/telegram.svg" width="45" height="45" alt="" /><span>Telegram</span><small>Подбор и заказ</small></a>
+            <a class="channel-card" href="https://vk.me/club57407045" target="_blank" rel="noopener noreferrer" data-track="click_vk"><img src="icons/vk.svg" width="45" height="45" alt="" /><span>ВКонтакте</span><small>Подбор и заказ</small></a>
+          </div>
+
+          <div class="phone-card"><p>Можно просто позвонить</p><a href="tel:+79212523295" data-track="click_call">+7 (921) 252-32-95</a></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="loyalty" aria-labelledby="loyalty-title">
+      <div class="container loyalty-grid">
+        <div>
+          <h2 id="loyalty-title">500 приветственных баллов в программе EcoNext</h2>
+          <p>UDS нужен не для первого знакомства с товарами, а чтобы сохранить ваши баллы, получать персональные предложения и не потерять EcoNext после покупки.</p>
+          <div class="loyalty-note">Каталог можно смотреть без приложения. Установка — только по вашему желанию.</div>
+        </div>
+        <a class="button button-light" href="https://econext.uds.app" target="_blank" rel="noopener noreferrer" data-track="click_uds">Получить 500 баллов</a>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="trust-title">
+      <div class="container">
+        <div class="section-head"><p class="section-kicker">Почему удобно</p><h2 id="trust-title">Покупка в своём темпе</h2></div>
+        <div class="trust-grid">
+          <article class="trust-card"><div class="trust-icon">🔎</div><h3>Всё видно заранее</h3><p>Категории, названия и цены доступны в общем каталоге без предварительной регистрации.</p></article>
+          <article class="trust-card"><div class="trust-icon">💬</div><h3>Живой подбор</h3><p>Напишите в MAX, Telegram или ВКонтакте — поможем найти изделие под вашу задачу.</p></article>
+          <article class="trust-card"><div class="trust-icon">🚚</div><h3>Доставка по России</h3><p>Заказ не привязан к одному городу. Уточним удобный способ получения перед оформлением.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft" aria-labelledby="social-title">
+      <div class="container">
+        <div class="section-head"><p class="section-kicker">Оставайтесь на связи</p><h2 id="social-title">Новости, советы и ярмарки</h2><p class="section-copy">Подпишитесь на удобную площадку, чтобы узнавать о новинках и предложениях.</p></div>
+        <div class="social-grid">
+          <a class="social-card" href="https://t.me/ecoNEXT_microfiber" target="_blank" rel="noopener noreferrer" data-track="click_catalog_telegram"><img src="icons/telegram.svg" width="35" height="35" alt="" /><span><strong>Telegram-канал</strong><small>Новинки и советы</small></span></a>
+          <a class="social-card" href="https://max.ru/join/j6qWUNJz2EqAmaiTeXHbCrAWpvtud3l95zxdzkO_eMA" target="_blank" rel="noopener noreferrer" data-track="click_catalog_max"><img src="icons/max.svg" width="35" height="35" alt="" /><span><strong>MAX-канал</strong><small>Новости и предложения</small></span></a>
+          <a class="social-card" href="https://vk.com/ecolifemicrofiber" target="_blank" rel="noopener noreferrer" data-track="click_catalog_vk"><img src="icons/vk.svg" width="35" height="35" alt="" /><span><strong>ВКонтакте</strong><small>Отзывы и фотографии</small></span></a>
+          <a class="social-card" href="https://t.me/+PTibcvzZLzczNmQy" target="_blank" rel="noopener noreferrer" data-track="click_catalog_telegram"><span aria-hidden="true">🗓</span><span><strong>Где нас встретить</strong><small>Города и даты ярмарок</small></span></a>
+        </div>
+      </div>
+    </section>
   </main>
+
+  <footer>
+    <div class="container footer-row">
+      <span>© EcoNext · изделия из микрофибры</span>
+      <div class="footer-links"><a href="https://www.эколайф.рус" target="_blank" rel="noopener noreferrer" data-track="click_catalog_website">Официальный сайт</a><a href="tel:+79212523295" data-track="click_call">Позвонить</a></div>
+    </div>
+  </footer>
 
   <script>
     (function () {
+      var ANALYTICS_URL = "https://econext-landing.vercel.app/api/events";
+      var SESSION_KEY = "econext_visit_sid";
       var categories = {
-        her: {
-          title: "🎁 Для неё",
-          cta: "Подобрать подарок — для неё",
-          items: [
-            "Тюрбан для волос",
-            "Полотенце Макси",
-            "Мочалки для тела",
-            "Готовые подарочные наборы"
-          ]
-        },
-        home: {
-          title: "🏠 Для дома",
-          cta: "Подобрать подарок — для дома",
-          items: [
-            "Коврики Шиншилла",
-            "Набор для кухни",
-            "Салфетки для стекла и зеркал",
-            "Товары для уборки дома"
-          ]
-        },
-        auto: {
-          title: "🚗 Для авто",
-          cta: "Подобрать подарок — для авто",
-          items: [
-            "Автонаборы",
-            "Салфетки для стекла и зеркал",
-            "Универсальные салфетки",
-            "Товары для ухода за машиной"
-          ]
-        }
+        home: { title: "Для уборки дома", copy: "Салфетки для пола, стекла, зеркал и разных поверхностей.", url: "https://econext.uds.app/c/goods?categoryId=3333113" },
+        kitchen: { title: "Для кухни и ванной", copy: "Изделия для посуды, раковин, сантехники и ежедневной уборки.", url: "https://econext.uds.app/c/goods?categoryId=3333118" },
+        care: { title: "Для лица и тела", copy: "Мягкие мочалки, спонжи и изделия для бережного ухода.", url: "https://econext.uds.app/c/goods?categoryId=3333116" },
+        bath: { title: "Полотенца, парео и тюрбаны", copy: "Для дома, бассейна, путешествий и бани.", url: "https://econext.uds.app/c/goods?categoryId=3333115" },
+        auto: { title: "Для автомобиля", copy: "Салфетки и наборы для стекла, салона и кузова.", url: "https://econext.uds.app/c/goods?categoryId=3333117" },
+        gift: { title: "Подарки EcoNext", copy: "Поможем собрать полезный набор под человека и ваш бюджет.", url: "https://econext.uds.app/c" }
       };
 
-      var buttons = Array.prototype.slice.call(
-        document.querySelectorAll(".category-button")
-      );
-      var result = document.getElementById("category-result");
-      var heading = document.getElementById("category-heading");
-      var list = document.getElementById("category-items");
-      var cta = document.getElementById("category-cta");
-      var selectedNote = document.getElementById("selected-note");
-      var currentKey = "";
-
-      function selectCategory(key) {
-        var data = categories[key];
-        if (!data) return;
-
-        currentKey = key;
-        buttons.forEach(function (button) {
-          button.setAttribute(
-            "aria-pressed",
-            button.getAttribute("data-category") === key ? "true" : "false"
-          );
-        });
-
-        heading.textContent = data.title;
-        list.innerHTML = "";
-        data.items.forEach(function (item) {
-          var li = document.createElement("li");
-          li.textContent = item;
-          list.appendChild(li);
-        });
-        cta.textContent = "🎁 " + data.cta;
-        result.classList.add("is-open");
+      function sessionId() {
+        try {
+          var id = localStorage.getItem(SESSION_KEY);
+          if (!id) {
+            id = (crypto.randomUUID ? crypto.randomUUID() : Date.now() + "-" + Math.random());
+            localStorage.setItem(SESSION_KEY, id);
+          }
+          return id;
+        } catch (error) {
+          return "visit-" + Date.now();
+        }
       }
 
+      function track(eventType) {
+        if (!eventType) return;
+        fetch(ANALYTICS_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ eventType: eventType, sessionId: sessionId(), site: "main", referrer: document.referrer || null }),
+          keepalive: true
+        }).catch(function () {});
+      }
+
+      document.querySelectorAll("[data-track]").forEach(function (element) {
+        element.addEventListener("click", function () { track(element.getAttribute("data-track")); });
+      });
+
+      var buttons = document.querySelectorAll(".category-button");
+      var result = document.getElementById("category-result");
+      var title = document.getElementById("category-result-title");
+      var copy = document.getElementById("category-result-copy");
+      var link = document.getElementById("category-result-link");
       buttons.forEach(function (button) {
         button.addEventListener("click", function () {
-          selectCategory(button.getAttribute("data-category"));
+          var selected = categories[button.getAttribute("data-category")];
+          if (!selected) return;
+          buttons.forEach(function (item) { item.setAttribute("aria-pressed", item === button ? "true" : "false"); });
+          title.textContent = selected.title;
+          copy.textContent = selected.copy;
+          link.href = selected.url;
+          result.classList.add("is-open");
         });
       });
 
-      cta.addEventListener("click", function () {
-        var data = categories[currentKey];
-        if (!data) return;
-        selectedNote.textContent =
-          "Вы выбрали: " + data.title.replace(/^[^ ]+ /, "") +
-          ". Откройте удобный канал — поможем подобрать товар.";
-        selectedNote.classList.add("is-visible");
-        document.getElementById("order").scrollIntoView({
-          behavior: "smooth",
-          block: "start"
-        });
-      });
+      track("page_open");
     })();
   </script>
 </body>
