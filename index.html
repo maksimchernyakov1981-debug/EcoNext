@@ -98,14 +98,15 @@
     .button-light { background: white; color: var(--green-dark); }
     .button-wide { width: 100%; }
     .hero-proof { display: flex; flex-wrap: wrap; gap: 10px 18px; margin-top: 22px; color: #52655a; font-size: 13px; font-weight: 700; }
-    .hero-proof span::before { content: "✓"; margin-right: 6px; color: var(--green); font-weight: 900; }
+    .hero-proof > * { color: inherit; text-decoration: none; }
+    .hero-proof > *::before { content: "✓"; margin-right: 6px; color: var(--green); font-weight: 900; }
 
-    .hero-visual { position: relative; min-height: 480px; }
-    .hero-photo { position: absolute; inset: 20px 20px 24px 54px; overflow: hidden; border: 10px solid rgba(255,255,255,.92); border-radius: 42px 42px 120px 42px; background: #e4eee4; box-shadow: var(--shadow); }
-    .hero-photo img { width: 100%; height: 100%; object-fit: cover; }
-    .visual-logo { position: absolute; left: 0; top: 0; width: 110px; height: 110px; display: grid; place-items: center; padding: 8px; border-radius: 50%; background: white; box-shadow: 0 14px 35px rgba(34, 75, 52, .17); }
+    .hero-visual { position: relative; min-height: 360px; }
+    .hero-photo { position: absolute; left: 32px; right: 0; top: 46px; aspect-ratio: 16 / 9; overflow: hidden; border: 8px solid rgba(255,255,255,.92); border-radius: 34px; background: white; box-shadow: var(--shadow); }
+    .hero-photo img { width: 100%; height: 100%; object-fit: contain; }
+    .visual-logo { position: absolute; left: 0; top: 12px; width: 96px; height: 96px; display: grid; place-items: center; padding: 8px; border-radius: 50%; background: white; box-shadow: 0 14px 35px rgba(34, 75, 52, .17); }
     .visual-logo img { width: 100%; height: 100%; object-fit: contain; border-radius: 50%; }
-    .bonus-card { position: absolute; right: 0; bottom: 0; width: 205px; padding: 18px; border-radius: 22px; background: var(--green-dark); color: white; box-shadow: 0 15px 36px rgba(23, 78, 56, .25); }
+    .bonus-card { position: absolute; right: -10px; bottom: 12px; width: 205px; padding: 18px; border-radius: 22px; background: var(--green-dark); color: white; text-decoration: none; box-shadow: 0 15px 36px rgba(23, 78, 56, .25); transition: transform .16s ease, box-shadow .16s ease; }
     .bonus-card strong { display: block; font-size: 25px; line-height: 1.1; }
     .bonus-card span { display: block; margin-top: 6px; color: rgba(255,255,255,.74); font-size: 12px; }
 
@@ -119,11 +120,8 @@
 
     .product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
     .product-card { overflow: hidden; border: 1px solid var(--line); border-radius: 24px; background: white; box-shadow: 0 8px 30px rgba(38, 72, 51, .06); }
-    .product-photo { aspect-ratio: 4 / 3; overflow: hidden; background: #edf2ea; }
+    .product-photo { aspect-ratio: 3 / 2; overflow: hidden; background: #edf2ea; }
     .product-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform .3s ease; }
-    .product-card:nth-child(1) .product-photo img { object-position: 18% center; }
-    .product-card:nth-child(2) .product-photo img { object-position: center; }
-    .product-card:nth-child(3) .product-photo img { object-position: 82% center; }
     .product-card:hover .product-photo img { transform: scale(1.035); }
     .product-body { padding: 20px; }
     .product-body h3 { font-size: 18px; line-height: 1.25; }
@@ -169,6 +167,7 @@
     .loyalty { padding: 68px 0; background: var(--green-dark); color: white; }
     .loyalty-grid { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 35px; }
     .loyalty h2 { max-width: 720px; margin-top: 0; }
+    .loyalty-title-link { color: inherit; text-decoration: none; }
     .loyalty p { max-width: 690px; margin-top: 13px; color: rgba(255,255,255,.72); }
     .loyalty-note { margin-top: 12px; color: #e1edc4; font-size: 13px; font-weight: 700; }
 
@@ -197,7 +196,7 @@
     @media (max-width: 900px) {
       .hero { padding-top: 42px; }
       .hero-grid { grid-template-columns: 1fr; gap: 34px; }
-      .hero-visual { min-height: 410px; max-width: 600px; width: 100%; margin-inline: auto; }
+      .hero-visual { min-height: 350px; max-width: 600px; width: 100%; margin-inline: auto; }
       .category-grid { grid-template-columns: repeat(3, 1fr); }
       .order-layout { grid-template-columns: 1fr; }
       .order-intro { position: static; }
@@ -215,10 +214,10 @@
       .hero-actions { display: grid; }
       .button { width: 100%; }
       .hero-proof { display: grid; gap: 7px; }
-      .hero-visual { min-height: 340px; }
-      .hero-photo { inset: 15px 4px 20px 35px; border-width: 7px; border-radius: 29px 29px 80px 29px; }
-      .visual-logo { width: 78px; height: 78px; }
-      .bonus-card { width: 171px; padding: 14px; border-radius: 17px; }
+      .hero-visual { min-height: 270px; }
+      .hero-photo { left: 18px; right: 0; top: 30px; border-width: 6px; border-radius: 22px; }
+      .visual-logo { top: 5px; width: 72px; height: 72px; }
+      .bonus-card { right: 0; bottom: 0; width: 171px; padding: 14px; border-radius: 17px; }
       .bonus-card strong { font-size: 21px; }
       .section { padding: 58px 0; }
       .section-head { margin-bottom: 22px; }
@@ -274,15 +273,15 @@
           <div class="hero-proof" aria-label="Преимущества">
             <span>Каталог без регистрации</span>
             <span>Помощь с выбором</span>
-            <span>500 приветственных баллов</span>
+            <a href="https://get.uds.app/" target="_blank" rel="noopener noreferrer" data-track="click_uds">500 приветственных баллов</a>
           </div>
         </div>
         <div class="hero-visual" aria-label="Изделия EcoNext">
           <div class="hero-photo">
-            <img src="hero-products.webp" width="1536" height="1024" alt="Ассортимент изделий из микрофибры" fetchpriority="high" />
+            <img src="hero-econext-overview.webp" width="1600" height="900" alt="Полезные изделия EcoNext для дома, отдыха и подарка" fetchpriority="high" />
           </div>
           <div class="visual-logo"><img src="logo.png" width="94" height="94" alt="EcoNext" /></div>
-          <div class="bonus-card"><strong>500 баллов</strong><span>новым участникам программы лояльности UDS</span></div>
+          <a class="bonus-card" href="https://get.uds.app/" target="_blank" rel="noopener noreferrer" data-track="click_uds" aria-label="Скачать приложение UDS и получить 500 баллов"><strong>500 баллов</strong><span>нажмите, чтобы скачать приложение UDS</span></a>
         </div>
       </div>
     </section>
@@ -296,15 +295,15 @@
         </div>
         <div class="product-grid">
           <article class="product-card">
-            <div class="product-photo"><img src="hero-products.webp" width="1536" height="1024" alt="Изделия из микрофибры для дома" loading="lazy" /></div>
+            <div class="product-photo"><img src="product-cleaning.webp" width="1536" height="1024" alt="Изделия EcoNext для уборки дома" loading="lazy" /></div>
             <div class="product-body"><h3>Для уборки дома</h3><p>Салфетки для кухни, ванной, стекла, зеркал и разных поверхностей.</p><a class="product-link" href="https://econext.uds.app/c/goods?categoryId=3333113" target="_blank" rel="noopener noreferrer" data-track="click_catalog_uds">Смотреть в каталоге →</a></div>
           </article>
           <article class="product-card">
-            <div class="product-photo"><img src="hero-products.webp" width="1536" height="1024" alt="Полотенца и изделия для ухода за собой" loading="lazy" /></div>
+            <div class="product-photo"><img src="product-care.webp" width="1536" height="1024" alt="Изделия EcoNext для ухода за собой" loading="lazy" /></div>
             <div class="product-body"><h3>Для ухода за собой</h3><p>Полотенца, тюрбаны, мочалки и мягкие изделия для лица и тела.</p><a class="product-link" href="https://econext.uds.app/c/goods?categoryId=3333115" target="_blank" rel="noopener noreferrer" data-track="click_catalog_uds">Смотреть в каталоге →</a></div>
           </article>
           <article class="product-card">
-            <div class="product-photo"><img src="hero-products.webp" width="1536" height="1024" alt="Подарочный набор изделий из микрофибры" loading="lazy" /></div>
+            <div class="product-photo"><img src="product-gifts.webp" width="1536" height="1024" alt="Подарочные наборы EcoNext для всей семьи" loading="lazy" /></div>
             <div class="product-body"><h3>Для подарка</h3><p>Практичные наборы для близких, коллег, дома, бани и автомобиля.</p><a class="product-link" href="#order" data-track="click_gift_category_cta">Подобрать подарок →</a></div>
           </article>
         </div>
@@ -370,11 +369,11 @@
     <section class="loyalty" aria-labelledby="loyalty-title">
       <div class="container loyalty-grid">
         <div>
-          <h2 id="loyalty-title">500 приветственных баллов в программе EcoNext</h2>
+          <h2 id="loyalty-title"><a class="loyalty-title-link" href="https://get.uds.app/" target="_blank" rel="noopener noreferrer" data-track="click_uds">500 приветственных баллов в программе EcoNext</a></h2>
           <p>UDS нужен не для первого знакомства с товарами, а чтобы сохранить ваши баллы, получать персональные предложения и не потерять EcoNext после покупки.</p>
           <div class="loyalty-note">Каталог можно смотреть без приложения. Установка — только по вашему желанию.</div>
         </div>
-        <a class="button button-light" href="https://econext.uds.app" target="_blank" rel="noopener noreferrer" data-track="click_uds">Получить 500 баллов</a>
+        <a class="button button-light" href="https://get.uds.app/" target="_blank" rel="noopener noreferrer" data-track="click_uds">Скачать UDS и получить 500 баллов</a>
       </div>
     </section>
 
