@@ -1,0 +1,14 @@
+{
+  "redirects": [
+    {
+      "source": "/admin",
+      "destination": "https://econext-landing.vercel.app/admin",
+      "permanent": false
+    },
+    {
+      "source": "/admin/:path*",
+      "destination": "https://econext-landing.vercel.app/admin/:path*",
+      "permanent": false
+    }
+  ]
+}
